@@ -33,9 +33,10 @@ public class InventoryPage extends BasePage {
     }
 
     public InventoryPage addItemByName(String name) {
+        // Sửa XPath: dùng contains() và đúng cấu trúc DOM của SauceDemo
         WebElement addButton = driver.findElement(
-                By.xpath("//div[@class='inventory_item_name' and text()='" + name + "']/ancestor::div[@class='inventory_item']//button")
-        );
+                By.xpath("//div[contains(@class,'inventory_item_name') and text()='" + name
+                        + "']/ancestor::div[contains(@class,'inventory_item')]//button"));
         waitAndClick(addButton);
         return this;
     }

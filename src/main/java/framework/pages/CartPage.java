@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,10 @@ public class CartPage extends BasePage {
     public CartPage removeFirstItem() {
         List<WebElement> removeButtons = driver.findElements(By.xpath("//button[text()='Remove']"));
         if (!removeButtons.isEmpty()) {
-            waitAndClick(removeButtons.get(0));
+            WebElement btn = removeButtons.get(0);
+            waitAndClick(btn);
+            // Chờ button đó biến mất để đảm bảo DOM đã cập nhật
+            wait.until(ExpectedConditions.stalenessOf(btn));
         }
         return this;
     }
@@ -38,11 +42,9 @@ public class CartPage extends BasePage {
     public List<String> getItemNames() {
         List<String> names = new ArrayList<>();
         List<WebElement> itemNames = driver.findElements(By.className("inventory_item_name"));
-
         for (WebElement item : itemNames) {
             names.add(item.getText().trim());
         }
-
         return names;
     }
 }

@@ -32,8 +32,7 @@ public class CartTest extends BaseTest {
 
         Assert.assertTrue(
                 cartPage.getItemNames().contains(config.getProperty("product.name")),
-                "Khong tim thay san pham vua them trong gio hang"
-        );
+                "Khong tim thay san pham vua them trong gio hang");
     }
 
     @Test
