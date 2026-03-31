@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lab9-Bai2-Suite">
+
+    <parameter name="browser" value="chrome"/>
+    <parameter name="env" value="dev"/>
+
+    <test name="Login-Tests">
+        <classes>
+            <class name="tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="Cart-Tests">
+        <classes>
+            <class name="tests.CartTest"/>
+        </classes>
+    </test>
+
+</suite>

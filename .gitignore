@@ -1,0 +1,8 @@
+target/
+.idea/
+*.iml
+screenshots/
+target/screenshots/
+.env
+*.log
+local.properties
