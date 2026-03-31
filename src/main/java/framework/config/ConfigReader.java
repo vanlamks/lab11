@@ -8,7 +8,23 @@ public class ConfigReader {
 
     private static ConfigReader instance;
     private final Properties properties = new Properties();
+    
+    public String getUsername() {
+        String username = System.getenv("APP_USERNAME");
+        if (username == null || username.isBlank()) {
+            username = getProperty("app.username");
+        }
+        return username;
+    }
 
+    public String getPassword() {
+        String password = System.getenv("APP_PASSWORD");
+        if (password == null || password.isBlank()) {
+            password = getProperty("app.password");
+        }
+        return password;
+    }
+    
     private ConfigReader() {
         String env = System.getProperty("env", "dev");
         String filePath = "src/test/resources/config-" + env + ".properties";

@@ -14,9 +14,14 @@ public class LoginTest extends BaseTest {
         ConfigReader config = ConfigReader.getInstance();
         LoginPage loginPage = new LoginPage(getDriver());
 
+//        InventoryPage inventoryPage = loginPage.login(
+//                config.getProperty("standard.username"),
+//                config.getProperty("standard.password")
+//        );
+        
         InventoryPage inventoryPage = loginPage.login(
-                config.getProperty("standard.username"),
-                config.getProperty("standard.password")
+                config.getUsername(),
+                config.getPassword()
         );
 
         Assert.assertTrue(inventoryPage.isLoaded(), "Dang nhap dung nhung khong vao duoc Inventory Page");

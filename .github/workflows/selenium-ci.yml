@@ -17,6 +17,11 @@ jobs:
       fail-fast: false
 
     steps:
+      - name: Verify secret masking
+        run: echo "APP_PASSWORD=$APP_PASSWORD"
+        env:
+          APP_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
+
       - name: Checkout code
         uses: actions/checkout@v4
 
